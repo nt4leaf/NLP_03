@@ -1,0 +1,10 @@
+streamlit
+matplotlib
+seaborn
+spacy
+scikit-learn
+keras
+tensorflow
+nltk
+google-api-python-client
+
