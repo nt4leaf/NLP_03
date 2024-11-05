@@ -2,7 +2,7 @@ import nltk
 from googleapiclient.discovery import build
 
 import spacy
-st.text(spacy.info())
+st.json(spacy.info())
 #nlp = spacy.load("en_core_web_sm")  # Tải mô hình ngôn ngữ tiếng Anh nhỏ cho phân tích ngữ nghĩa
 
 from nltk.corpus import stopwords
