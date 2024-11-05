@@ -3,11 +3,8 @@ from googleapiclient.discovery import build
 
 import spacy
 # Load the spaCy model
-nlp = spacy.load("en_core_web_sm")
-
-# Display spaCy info using Streamlit
-info = spacy.info()
-st.json(info)
+import spacy
+st.text(spacy.util.get_package_path("en_core_web_sm"))
 
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
