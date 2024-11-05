@@ -1,5 +1,7 @@
 import streamlit as st
 import comments_youtube
+import re
+
  # Hàm để trích xuất ID video từ liên kết YouTube
 def extract_video_id(url):
     # Sử dụng regex để tìm ID video
