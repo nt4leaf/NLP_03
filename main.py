@@ -10,9 +10,9 @@ def extract_video_id(url):
 
 def cmt_processing(video_id):
     comments = comments_youtube.video_comments(video_id)
-    clear_text = comments_youtube.text_processing(comments)
+    #clear_text = comments_youtube.text_processing(comments)
     # clear_text_padded = comments_youtube.padding(tokenize(clear_text))
-    return clear_text
+    return comments
 
 # Giao diện Streamlit
 st.title('YouTube Video ID Extractor')
