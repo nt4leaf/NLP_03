@@ -7,4 +7,3 @@ keras
 tensorflow
 nltk
 google-api-python-client
-re
