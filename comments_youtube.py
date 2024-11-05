@@ -1,14 +1,40 @@
 import nltk
 from googleapiclient.discovery import build
 import streamlit as st
-import spacy
-# Load the spaCy model
-import spacy
+import streamlit as st
+import subprocess
+import nltk
+
+# Hàm để chạy lệnh CMD
+def run_cmd(cmd):
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    return result.stdout
+
+# Chạy lệnh cài đặt môi trường
+st.write("Đang cài đặt môi trường...")
+
+# Cài đặt mô hình spaCy
+spacy_install_output = run_cmd("python -m spacy download en_core_web_sm")
+st.text_area("Cài đặt spaCy:", spacy_install_output)
+
+# Tải xuống dữ liệu NLTK
+nltk.download('stopwords')
+
+# Kiểm tra cài đặt
 try:
-    model_path = spacy.util.get_package_path("en_core_web_sm")
-    st.text(model_path)
-except ImportError:
-    st.text("Model 'en_core_web_sm' is not installed.")
+    import spacy
+    nlp = spacy.load("en_core_web_sm")
+    st.success("Mô hình 'en_core_web_sm' đã được cài đặt thành công.")
+except OSError:
+    st.error("Không thể cài đặt mô hình 'en_core_web_sm'.")
+
+# Sử dụng stopwords của NLTK
+stop = nltk.corpus.stopwords.words('english')
+st.text(f"Stopwords: {stop[:10]}")  # Hiển thị 10 stopwords đầu tiên làm ví dụ
+
+# Giao diện Streamlit
+st.title("Ứng dụng Streamlit với cài đặt môi trường tự động")
+
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
 
