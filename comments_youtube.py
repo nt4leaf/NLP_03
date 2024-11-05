@@ -4,8 +4,11 @@ import streamlit as st
 import spacy
 # Load the spaCy model
 import spacy
-st.text(spacy.util.get_package_path("en_core_web_sm"))
-
+try:
+    model_path = spacy.util.get_package_path("en_core_web_sm")
+    st.text(model_path)
+except ImportError:
+    st.text("Model 'en_core_web_sm' is not installed.")
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
 
