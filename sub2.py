@@ -3,6 +3,10 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer
+# Khởi tạo PorterStemmer
+stemmer = PorterStemmer()
 
 chat_words = {
     "AFAIK": "As Far As I Know",
@@ -104,6 +108,12 @@ def replace_chat_words(text):
 def remove_stopwords(text):
     text = ' '.join([word for word in text.split() if word not in (stop)])
     return text
+
+def apply_stemming(text):
+    words = word_tokenize(text)  # Tách văn bản thành danh sách các từ
+    stemmed_words = [stemmer.stem(word) for word in words]  # Áp dụng stemming cho từng từ trong danh sách
+    return ' '.join(stemmed_words)  # Kết hợp các từ sau khi stemming thành một chuỗi văn bản
+
 
 def text_processing(comments):
   clear_text = []
