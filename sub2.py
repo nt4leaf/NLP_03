@@ -2,7 +2,7 @@ import re
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt_tab')
-nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_')
 #nltk.download('punkt')
 
 from nltk.corpus import stopwords
