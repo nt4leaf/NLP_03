@@ -3,15 +3,6 @@ import nltk
 import streamlit as st
 nltk.download('stopwords')
 nltk.download('punkt_tab')
-nltk.download('averaged_perceptron_tagger_en')
-from nltk.data import find
-try:
-    find('taggers/averaged_perceptron_tagger_en/')
-    st.text("averaged_perceptron_tagger is already downloaded.")
-except LookupError:
-    st.text("averaged_perceptron_tagger is not downloaded.")
-
-
 from nltk import pos_tag
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
