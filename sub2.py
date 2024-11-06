@@ -1,13 +1,17 @@
 import re
 import nltk
 nltk.download('stopwords')
-#nltk.download('punkt')
 nltk.download('punkt_tab')
+#nltk.download('punkt')
 #nltk.download('averaged_perceptron_tagger')
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
+
 from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 from nltk.stem import PorterStemmer
+from nltk.corpus import wordnet
+
 # Khởi tạo PorterStemmer
 stemmer = PorterStemmer()
 
@@ -117,6 +121,37 @@ def apply_stemming(text):
     stemmed_words = [stemmer.stem(word) for word in words]  # Áp dụng stemming cho từng từ trong danh sách
     return ' '.join(stemmed_words)  # Kết hợp các từ sau khi stemming thành một chuỗi văn bản
 
+def get_wordnet_pos(tag):
+    if tag.startswith('J'):
+        return wordnet.ADJ
+    elif tag.startswith('V'):
+        return wordnet.VERB
+    elif tag.startswith('N'):
+        return wordnet.NOUN
+    elif tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return None
+
+# Hàm lemmatization
+def lemmatize_text(text):
+    # Khởi tạo WordNetLemmatizer
+    lemmatizer = WordNetLemmatizer()
+
+    # Tách từ
+    tokens = word_tokenize(text)
+
+    # Gắn thẻ từ loại
+    tagged_tokens = nltk.pos_tag(tokens)
+
+    # Lemmatization cho mỗi từ
+    lemmatized_text = []
+    for token, tag in tagged_tokens:
+        wordnet_pos = get_wordnet_pos(tag) or wordnet.NOUN
+        lemmatized_text.append(lemmatizer.lemmatize(token, wordnet_pos))
+
+    # Ghép các từ lại thành chuỗi
+    return ' '.join(lemmatized_text)
 
 def text_processing(comments):
   clear_text = []
@@ -143,7 +178,7 @@ def text_processing(comments):
     # Stemming và Lemmatization
     if isinstance(i, str):
        i = apply_stemming(i)
-    #   i = lemmatize_text(i)
+       i = lemmatize_text(i)
     clear_text.append(i)
     # Trả về clear_text sau khi đã thay các cụm từ riêng bằng cụm từ cố định
   return clear_text
