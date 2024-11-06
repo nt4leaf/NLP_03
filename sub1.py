@@ -27,7 +27,7 @@ def model_pred(video_id):
     st.text("success_2")
     clear_text_padded = padding(tokenize(clear_text))
     st.text("success_3")
-
+    """
     # Load model
     url = ''
     r = requests.get(url, allow_redirects=True)
@@ -39,7 +39,7 @@ def model_pred(video_id):
     #y_pred = model.predict(clear_text_padded)
     #y_pred = np.argmax(y_pred, axis=1)
 
-    """
+    
     emote_predict = [emote_mapping[i] for i in y_pred]
     df_comments = pd.DataFrame({
         'Comment': comments,
