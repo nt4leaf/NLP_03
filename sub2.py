@@ -2,27 +2,21 @@ import re
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt_tab')
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('wordnet')
-
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
 
-import subprocess
-def run_cmd(cmd):
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    return result.stdout
-
-#averaged_perceptron_tagger_output = run_cmd("python -m nltk.downloader averaged_perceptron_tagger")
-
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 from nltk.stem import PorterStemmer
-
-from nltk.corpus import wordnet
-
 # Khởi tạo PorterStemmer
 stemmer = PorterStemmer()
+
+nltk.download('averaged_perceptron_tagger_eng')
+
+nltk.download('wordnet')
+from nltk.corpus import wordnet
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+
+
 
 chat_words = {
     "AFAIK": "As Far As I Know",
