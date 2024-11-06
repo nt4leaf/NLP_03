@@ -11,25 +11,25 @@ def extract_video_id(url):
     return video_id.group(0) if video_id else None
 
 def cmt_processing(video_id):
-    comments = comments_youtube.video_comments(video_id)
-    #clear_text = comments_youtube.text_processing(comments)
+    comment = comments_youtube.video_comments(video_id)
+    clear_text = comments_youtube.text_processing(comment)
     # clear_text_padded = comments_youtube.padding(tokenize(clear_text))
-    return comments
+    return comment
 
 # Giao diện Streamlit
 st.title('YouTube Video ID Extractor')
 
 # Nhập liên kết YouTube
-url = st.text_input('Enter YouTube URL')
+link = st.text_input('Enter YouTube URL')
 
 # Hiển thị ID video nếu liên kết hợp lệ
-if url:
-    video_id = extract_video_id(url)
-    if not video_id:
+if link:
+    vid_id = extract_video_id(link)
+    if not vid_id:
         st.error('Invalid YouTube URL')
     else:
-        st.success(f'Video ID: {video_id}')
-        comments = cmt_processing(video_id)
+        st.success(f'Video ID: {vid_id}')
+        comments = cmt_processing(vid_id)
         for i in comments:
             st.text(i)
 
