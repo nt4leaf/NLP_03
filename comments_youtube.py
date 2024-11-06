@@ -239,8 +239,8 @@ def text_processing(comments):
     # Loại bỏ ký tự đặc biệt
     i = re.sub(r'[^\w\s]', '', i)
     # Stemming và Lemmatization
-    if isinstance(i, str):
-      i = apply_stemming(i)
+    #if isinstance(i, str):
+    #  i = apply_stemming(i)
     #  i = lemmatize_text(i)
     clear_text.append(i)
     # Trả về clear_text sau khi đã thay các cụm từ riêng bằng cụm từ cố định
