@@ -1,11 +1,16 @@
 import re
 import nltk
+import streamlit as st
+st.text(nltk.data.path)
+
+
 nltk.download('stopwords')
 nltk.download('punkt_tab')
 
-#nltk.download('punkt')
-from nltk import pos_tag
 nltk.download('averaged_perceptron_tagger')
+from nltk import pos_tag
+tagged_tokens = pos_tag(tokens)
+
 
 
 from nltk.corpus import stopwords
@@ -183,7 +188,7 @@ def text_processing(comments):
     # Stemming và Lemmatization
     if isinstance(i, str):
        i = apply_stemming(i)
-       i = lemmatize_text(i)
+       #i = lemmatize_text(i)
     clear_text.append(i)
     # Trả về clear_text sau khi đã thay các cụm từ riêng bằng cụm từ cố định
   return clear_text
