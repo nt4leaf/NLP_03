@@ -7,9 +7,11 @@ video_id = st.text_input('Enter Video ID')
 
 # Kiểm tra nếu có dữ liệu nhập vào
 if video_id:
+    placeholder.success('Processing')
     result = model_pred(video_id)
     if not result:
         placeholder.error('Invalid Video ID!')
+
 else:
     placeholder.empty()
 
