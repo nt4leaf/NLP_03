@@ -1,3 +1,5 @@
+import time
+
 import streamlit as st
 from sub1 import model_pred
 
@@ -10,6 +12,7 @@ if video_id:
     placeholder.success('Processing')
     result = model_pred(video_id)
     placeholder.success('Success')
+    time.sleep(1)
     placeholder.empty()
     if not result:
         placeholder.error('Invalid Video ID!')
