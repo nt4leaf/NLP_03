@@ -38,7 +38,9 @@ emote_mapping = {
 }
 
 def model_pred(video_id):
-    comments = video_comments(video_id)
+    check, comments = video_comments(video_id)
+    if not check:
+        return 0
     clear_text = text_processing(comments)
     clear_text_padded = padding(tokenize(clear_text))
     file_id = '1peNnSykGJUtQpq9Y12Ax-xP6T4sgy2bd'
@@ -64,7 +66,7 @@ def model_pred(video_id):
     st.dataframe(df_emote_counts, width=400, height=500)
     st.text("\nNhãn của các bình luận:")
     st.dataframe(df_comments, width=400, height=800)
-
+    return 1
 
 
 

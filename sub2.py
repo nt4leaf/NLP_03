@@ -1,11 +1,17 @@
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 def video_comments(video_id):
     api_key = 'AIzaSyBP5BExPx1lN_wlS8uiITi1WKpBnQ9G_ig'
     replies = []
     comments = []
     youtube = build('youtube', 'v3', developerKey=api_key)
-    video_response=youtube.commentThreads().list(part='snippet,replies', videoId=video_id).execute()
+    #video_response=youtube.commentThreads().list(part='snippet,replies', videoId=video_id).execute()
+
+    try:
+        video_response = youtube.commentThreads().list(part='snippet,replies', videoId=video_id).execute()
+    except HttpError as e:
+        return 0, []
 
     while video_response:
         for item in video_response['items']:
@@ -27,4 +33,4 @@ def video_comments(video_id):
                 ).execute()
         else:
             break
-    return comments
+    return 1, comments
