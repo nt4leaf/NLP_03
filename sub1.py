@@ -41,8 +41,7 @@ def model_pred(video_id):
     comments = video_comments(video_id)
     clear_text = text_processing(comments)
     clear_text_padded = padding(tokenize(clear_text))
-
-    file_id = '1RJpFlDTmuNRWbgDgpZWUm_XtOcPmh-Ec'
+    file_id = '1peNnSykGJUtQpq9Y12Ax-xP6T4sgy2bd-Ec'
     url = f'https://drive.google.com/uc?id={file_id}'
     output = 'best_model_128.keras'
     gdown.download(url, output, quiet=False)
