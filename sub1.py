@@ -4,7 +4,7 @@ from sub2 import video_comments
 from sub3 import text_processing
 import numpy as np
 import streamlit as st
-import requests
+import gdown
 import tensorflow as tf
 
 
@@ -27,14 +27,21 @@ def model_pred(video_id):
     st.text("success_2")
     clear_text_padded = padding(tokenize(clear_text))
     st.text("success_3")
-    """
-    # Load model
-    url = ''
-    r = requests.get(url, allow_redirects=True)
-    open('.h5', 'wb').write(r.content)
-    model = tf.keras.models.load_model('.h5')
+
+
+
+    # ID của file từ URL chia sẻ của Google Drive
+    file_id = '1RJpFlDTmuNRWbgDgpZWUm_XtOcPmh-Ec'
+    url = f'https://drive.google.com/uc?id={file_id}'
+    output = 'best_model_128.keras'
+    gdown.download(url, output, quiet=False)
+
+    # Tải mô hình
+    model = tf.keras.models.load_model('best_model_128.keras')
+    st.write(model.summary())
     st.text("success_4")
 
+    """
     # Predict
     #y_pred = model.predict(clear_text_padded)
     #y_pred = np.argmax(y_pred, axis=1)
