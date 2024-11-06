@@ -31,15 +31,10 @@ def model_pred(video_id):
     file_id = '1RJpFlDTmuNRWbgDgpZWUm_XtOcPmh-Ec'
     st.write("?1")
     url = f'https://drive.google.com/uc?id={file_id}'
-    st.write("?2")
     output = 'best_model_128.keras'
-    st.write("?3")
     gdown.download(url, output, quiet=False)
-    st.write("?4")
     # Tải mô hình
     model = tf.keras.models.load_model('best_model_128.keras')
-    st.write("?5")
-    st.write(model.summary())
     st.text("success_4")
 
     """
