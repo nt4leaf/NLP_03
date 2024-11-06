@@ -3,11 +3,12 @@ import nltk
 nltk.download('stopwords')
 nltk.download('punkt_tab')
 nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('wordnet')
+
 
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.corpus import wordnet
+nltk.download('wordnet')
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 stop = stopwords.words('english')
