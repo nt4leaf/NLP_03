@@ -155,7 +155,7 @@ def lemmatize_text(text):
 
 def text_processing(comments):
   clear_text = []
-  for i in comments[:1]:
+  for i in comments:
     # Loại bỏ thẻ HTML
     i = re.sub('<[^<]+?>', '', i)
     # Loại bỏ dường dẫn
