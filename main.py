@@ -1,6 +1,7 @@
 import re
 import streamlit as st
 from sub1 import video_comments
+from sub2 import chat_words
 from sub2 import text_processing
 def extract_video_id(url):
     # Sử dụng regex để tìm ID video
