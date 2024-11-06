@@ -14,7 +14,7 @@ def cmt_processing(video_id):
     comment = comments_youtube.video_comments(video_id)
     clear_text = comments_youtube.text_processing(comment)
     # clear_text_padded = comments_youtube.padding(tokenize(clear_text))
-    return comment
+    return clear_text
 
 # Giao diện Streamlit
 st.title('YouTube Video ID Extractor')
