@@ -2,8 +2,10 @@ import re
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt_tab')
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger_')
+
+#nltk.download('punkt')
+from nltk import pos_tag
+nltk.download('averaged_perceptron_tagger')
 
 
 from nltk.corpus import stopwords
@@ -12,6 +14,7 @@ stop = stopwords.words('english')
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.stem import PorterStemmer
+
 from nltk.corpus import wordnet
 
 # Khởi tạo PorterStemmer
