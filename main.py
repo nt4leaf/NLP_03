@@ -23,6 +23,7 @@ st.title('YouTube Video ID Extractor')
 link = st.text_input('Enter YouTube URL')
 
 # Hiển thị ID video nếu liên kết hợp lệ
+video_id = ''
 if link:
     video_id = extract_video_id(link)
     if not video_id:
