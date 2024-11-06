@@ -1,11 +1,17 @@
 import re
 import nltk
-import streamlit as st
 nltk.download('stopwords')
 nltk.download('punkt_tab')
 from nltk import pos_tag
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
+
+import subprocess
+def run_cmd(cmd):
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    return result.stdout
+
+averaged_perceptron_tagger_output = run_cmd("python -m nltk.downloader averaged_perceptron_tagger")
 
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer

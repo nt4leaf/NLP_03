@@ -1,11 +1,8 @@
 import re
 import streamlit as st
 from sub1 import video_comments
-import nltk
-nltk.download('averaged_perceptron_tagger')
-from sub2 import chat_words
 from sub2 import text_processing
-from nltk import pos_tag
+
 def extract_video_id(url):
     # Sử dụng regex để tìm ID video
     video_id = re.search(r'(?<=v=)[^&#]+', url)
