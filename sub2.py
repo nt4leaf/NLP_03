@@ -1,3 +1,4 @@
+import re
 chat_words = {
     "AFAIK": "As Far As I Know",
     "AFK": "Away From Keyboard",
