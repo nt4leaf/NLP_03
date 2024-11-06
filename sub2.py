@@ -1,4 +1,6 @@
 import re
+from nltk.corpus import stopwords
+stop = stopwords.words('english')
 chat_words = {
     "AFAIK": "As Far As I Know",
     "AFK": "Away From Keyboard",
