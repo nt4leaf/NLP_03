@@ -1,6 +1,7 @@
 import re
 from nltk.corpus import stopwords
-stop = stopwords.words('english')
+
+
 chat_words = {
     "AFAIK": "As Far As I Know",
     "AFK": "Away From Keyboard",
@@ -99,6 +100,7 @@ def replace_chat_words(text):
     return ' '.join(words)  # Ghép các từ lại thành văn bản đã được thay thế
 
 def remove_stopwords(text):
+    stop = stopwords.words('english')
     text = ' '.join([word for word in text.split() if word not in (stop)])
     return text
 
