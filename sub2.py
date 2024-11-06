@@ -1,20 +1,20 @@
 import re
 import nltk
-import streamlit as st
-
 nltk.download('stopwords')
 nltk.download('punkt_tab')
+from nltk.corpus import stopwords
+
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer
+
 nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('wordnet')
 from nltk.data import find
-find('corpora/wordnet.zip')
-
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
+#find('corpora/wordnet.zip')
 from nltk.corpus import wordnet
-from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-stop = stopwords.words('english')
+
+
 
 
 
@@ -119,6 +119,7 @@ def replace_chat_words(text):
     return ' '.join(words)  # Ghép các từ lại thành văn bản đã được thay thế
 
 def remove_stopwords(text):
+    stop = stopwords.words('english')
     text = ' '.join([word for word in text.split() if word not in (stop)])
     return text
 
