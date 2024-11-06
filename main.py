@@ -1,7 +1,7 @@
 import re
 import streamlit as st
 from sub1 import video_comments
-
+from sub2 import text_processing
 def extract_video_id(url):
     # Sử dụng regex để tìm ID video
     video_id = re.search(r'(?<=v=)[^&#]+', url)
@@ -11,9 +11,9 @@ def extract_video_id(url):
 
 def cmt_processing(video_id):
     comment = video_comments(video_id)
-    # clear_text = text_processing(comment)
+    clear_text = text_processing(comment)
     # clear_text_padded = comments_youtube.padding(tokenize(clear_text))
-    return comment
+    return clear_text
 
 # Giao diện Streamlit
 st.title('YouTube Video ID Extractor')
