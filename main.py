@@ -29,5 +29,6 @@ if link:
     else:
         st.success(f'Video ID: {video_id}')
         comments = cmt_processing(video_id)
-
+        for i in comments[:10]:
+            st.text(i)
 
