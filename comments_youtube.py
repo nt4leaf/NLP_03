@@ -1,6 +1,8 @@
 from googleapiclient.discovery import build
 import subprocess
 import nltk
+import streamlit as st
+st.text(nltk.data.path)
 import re
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
