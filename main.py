@@ -1,7 +1,14 @@
 import streamlit as st
 import comments_youtube
+import nltk
+import streamlit as st
+st.text(nltk.data.path)
 import re
-
+nltk.download('wordnet')
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('punktab')
+nltk.download('averaged_perceptron_tagger')
  # Hàm để trích xuất ID video từ liên kết YouTube
 def extract_video_id(url):
     # Sử dụng regex để tìm ID video
