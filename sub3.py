@@ -2,23 +2,17 @@ import re
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt_tab')
-from nltk.corpus import stopwords
-
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-
 nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('wordnet')
-from nltk.data import find
+#from nltk.data import find
 #find('corpora/wordnet.zip')
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
-
-
-
-
-# Khởi tạo PorterStemmer
 stemmer = PorterStemmer()
 
 chat_words = {
@@ -110,13 +104,12 @@ chat_words = {
     "CSL": "Can't stop laughing"
 }
 
-# Hàm thay thế các từ viết tắt trong chat bằng dạng đầy đủ
 def replace_chat_words(text):
-    words = text.split()  # Tách văn bản thành các từ riêng biệt
-    for i, word in enumerate(words):  # Lặp qua từng từ trong văn bản
-        if word.lower() in chat_words:  # Kiểm tra nếu từ viết tắt nằm trong từ điển chat_words
-            words[i] = chat_words[word.lower()]  # Thay thế từ viết tắt bằng dạng đầy đủ
-    return ' '.join(words)  # Ghép các từ lại thành văn bản đã được thay thế
+    words = text.split()
+    for i, word in enumerate(words):
+        if word.lower() in chat_words:
+            words[i] = chat_words[word.lower()]
+    return ' '.join(words)
 
 def remove_stopwords(text):
     stop = stopwords.words('english')
@@ -140,24 +133,15 @@ def get_wordnet_pos(tag):
     else:
         return None
 
-# Hàm lemmatization
 def lemmatize_text(text):
-    # Khởi tạo WordNetLemmatizer
     lemmatizer = WordNetLemmatizer()
-
-    # Tách từ
     tokens = word_tokenize(text)
-
-    # Gắn thẻ từ loại
     tagged_tokens = nltk.pos_tag(tokens)
-
-    # Lemmatization cho mỗi từ
     lemmatized_text = []
+
     for token, tag in tagged_tokens:
         wordnet_pos = get_wordnet_pos(tag) or wordnet.NOUN
         lemmatized_text.append(lemmatizer.lemmatize(token, wordnet_pos))
-
-    # Ghép các từ lại thành chuỗi
     return ' '.join(lemmatized_text)
 
 def text_processing(comments):
@@ -187,5 +171,4 @@ def text_processing(comments):
        i = apply_stemming(i)
        i = lemmatize_text(i)
     clear_text.append(i)
-    # Trả về clear_text sau khi đã thay các cụm từ riêng bằng cụm từ cố định
   return clear_text

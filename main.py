@@ -9,14 +9,7 @@ def extract_video_id(url):
         video_id = re.search(r'(?<=be/)[^&#]+', url)
     return video_id.group(0) if video_id else None
 
-# Giao diện Streamlit
-st.title('YouTube Video ID Extractor')
-
-# Nhập liên kết YouTube
 link = st.text_input('Enter YouTube URL')
-
-# Hiển thị ID video nếu liên kết hợp lệ
-video_id = ''
 if link:
     video_id = extract_video_id(link)
     if not video_id:
