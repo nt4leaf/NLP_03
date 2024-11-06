@@ -1,4 +1,3 @@
-import streamlit as st
 import comments_youtube
 import nltk
 import streamlit as st
