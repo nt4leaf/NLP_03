@@ -1,5 +1,7 @@
 import re
 import nltk
+import streamlit as st
+
 nltk.download('stopwords')
 nltk.download('punkt_tab')
 nltk.download('averaged_perceptron_tagger_eng')
@@ -12,6 +14,13 @@ nltk.download('wordnet')
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 stop = stopwords.words('english')
+
+from nltk.data import find
+try:
+    find('corpora/wordnet.zip')
+    st.text("WordNet đã được tải xuống.")
+except LookupError:
+    st.text("WordNet chưa được tải xuống.")
 
 # Khởi tạo PorterStemmer
 stemmer = PorterStemmer()
