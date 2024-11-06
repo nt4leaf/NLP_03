@@ -193,7 +193,7 @@ def text_processing(comments):
     # Stemming và Lemmatization
     if isinstance(i, str):
        i = apply_stemming(i)
-       #i = lemmatize_text(i)
+       i = lemmatize_text(i)
     clear_text.append(i)
     # Trả về clear_text sau khi đã thay các cụm từ riêng bằng cụm từ cố định
   return clear_text
