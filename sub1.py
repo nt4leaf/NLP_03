@@ -61,9 +61,9 @@ def model_pred(video_id):
     df_emote_counts = df_emote_counts[['Emotion', 'Count']]
 
     st.text("Thống kê nhãn bình luận của video:")
-    st.dataframe(df_emote_counts, width=800)
+    st.dataframe(df_emote_counts, width=800, height=1000)
     st.text("\nNhãn của các bình luận:")
-    st.dataframe(df_comments, width=800)
+    st.dataframe(df_comments, width=800, height=1000)
 
 
 
