@@ -9,10 +9,6 @@ nltk.download('punkt_tab')
 
 nltk.download('averaged_perceptron_tagger')
 from nltk import pos_tag
-tagged_tokens = pos_tag(tokens)
-
-
-
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
 
