@@ -3,7 +3,8 @@ import nltk
 nltk.download('stopwords')
 nltk.download('punkt_tab')
 nltk.download('averaged_perceptron_tagger_eng')
-from nltk import pos_tag
+nltk.download('wordnet')
+
 from nltk.corpus import stopwords
 stop = stopwords.words('english')
 
